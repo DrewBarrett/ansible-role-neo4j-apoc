@@ -1,13 +1,13 @@
 ---
 - name: Check if Neo4j Graph Algorithms is already installed
   stat:
-    path: "{{ neo4j_graph_algorithms_install_path }}apoc-{{ neo4j_graph_algorithms_version }}-all.jar"
+    path: "{{ neo4j_graph_algorithms_install_path }}apoc-{{ neo4j_apoc_version }}-all.jar"
   register: check_neo4j_graph_algorithms_path
 
 - name: Download Neo4j Graph Algorithms
   get_url:
     url: "{{ neo4j_graph_algorithms_download_url }}"
-    dest: "{{ neo4j_graph_algorithms_install_path }}apoc-{{ neo4j_graph_algorithms_version }}-all.jar"
+    dest: "{{ neo4j_graph_algorithms_install_path }}apoc-{{ neo4j_apoc_version }}-all.jar"
     mode: 0755
   when: check_neo4j_graph_algorithms_path.stat.exists == False
   notify: Restart Neo4j
@@ -16,7 +16,7 @@
   find:
     paths: "{{ neo4j_graph_algorithms_install_path }}"
     patterns: 'apoc*.jar'
-    excludes: "apoc-{{ neo4j_graph_algorithms_version }}-all.jar"
+    excludes: "apoc-{{ neo4j_apoc_version }}-all.jar"
   register: old_neo4j_graph_algorithms
 
 - name: Remove older versions of Neo4j Graph Algorithms
