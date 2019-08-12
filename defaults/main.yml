@@ -1,4 +1,4 @@
 ---
-neo4j_graph_algorithms_version: 3.4.7.0
-neo4j_graph_algorithms_download_url: "https://github.com/neo4j-contrib/neo4j-graph-algorithms/releases/download/{{ neo4j_graph_algorithms_version }}/graph-algorithms-algo-{{ neo4j_graph_algorithms_version }}.jar"
-neo4j_graph_algorithms_install_path: /var/lib/neo4j/plugins/
+neo4j_apoc_version: 3.5.0.4
+neo4j_apoc_download_url: "https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/download/{{ neo4j_graph_algorithms_version }}/apoc-{{ neo4j_graph_algorithms_version }}-all.jar"
+neo4j_apoc_install_path: /var/lib/neo4j/plugins/
