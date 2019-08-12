@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: neo4j_apoc
   author: Kevin Coakley
   description: Install APOC for Neo4j
   license: BSD
