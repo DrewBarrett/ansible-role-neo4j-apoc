@@ -1,6 +1,6 @@
 galaxy_info:
   author: Kevin Coakley
-  description: Install Efficient Graph Algorithms for Neo4j (https://github.com/neo4j-contrib/neo4j-graph-algorithms)
+  description: Install APOC for Neo4j
   license: BSD
 
   min_ansible_version: 2.5
