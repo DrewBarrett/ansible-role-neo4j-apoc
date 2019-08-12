@@ -1,13 +1,13 @@
 ---
 - name: Check if Neo4j Graph Algorithms is already installed
   stat:
-    path: "{{ neo4j_graph_algorithms_install_path }}graph-algorithms-algo-{{ neo4j_graph_algorithms_version }}.jar"
+    path: "{{ neo4j_graph_algorithms_install_path }}apoc-{{ neo4j_graph_algorithms_version }}-all.jar"
   register: check_neo4j_graph_algorithms_path
 
 - name: Download Neo4j Graph Algorithms
   get_url:
     url: "{{ neo4j_graph_algorithms_download_url }}"
-    dest: "{{ neo4j_graph_algorithms_install_path }}graph-algorithms-algo-{{ neo4j_graph_algorithms_version }}.jar"
+    dest: "{{ neo4j_graph_algorithms_install_path }}apoc-{{ neo4j_graph_algorithms_version }}-all.jar"
     mode: 0755
   when: check_neo4j_graph_algorithms_path.stat.exists == False
   notify: Restart Neo4j
@@ -15,8 +15,8 @@
 - name: Find older versions of Neo4j Graph Algorithms
   find:
     paths: "{{ neo4j_graph_algorithms_install_path }}"
-    patterns: 'graph-algorithms-algo*.jar'
-    excludes: "graph-algorithms-algo-{{ neo4j_graph_algorithms_version }}.jar"
+    patterns: 'apoc*.jar'
+    excludes: "apoc-{{ neo4j_graph_algorithms_version }}-all.jar"
   register: old_neo4j_graph_algorithms
 
 - name: Remove older versions of Neo4j Graph Algorithms
@@ -39,7 +39,7 @@
   lineinfile:
     path: /etc/neo4j/neo4j.conf
     regexp: ^dbms.security.procedures.unrestricted
-    line: dbms.security.procedures.unrestricted=algo.*
+    line: dbms.security.procedures.unrestricted=apoc.*
     backup: yes
   when: dbms_security_procedures_unrestricted_return.rc == 1
   notify: Restart Neo4j
@@ -47,7 +47,7 @@
 - name: Update the dbms.security.procedures.unrestricted config for enabling the Neo4j Graph Algorithms (Existing Line)
   lineinfile:
     path: /etc/neo4j/neo4j.conf
-    regexp: ^((dbms.security.procedures.unrestricted=)(?!.*algo.\*).*)
+    regexp: ^((dbms.security.procedures.unrestricted=)(?!.*apoc.\*).*)
     line: \1,algo.*
     backrefs: yes
     backup: yes
