@@ -3,7 +3,7 @@ ansible-role-neo4j-graph-algorithms
 
 [![Build Status](https://travis-ci.org/kevincoakley/ansible-role-neo4j-graph-algorithms.svg?branch=master)](https://travis-ci.org/kevincoakley/ansible-role-neo4j-graph-algorithms)
 
-Install Efficient Graph Algorithms for Neo4j (https://github.com/neo4j-contrib/neo4j-graph-algorithms) . Tested with Neo4j 3.4.7 on CentOS 7. Role should work for Ubuntu. 
+Install APOC for Neo4j (https://github.com/neo4j-contrib/neo4j-graph-algorithms) . Tested with Neo4j 3.4.7 on CentOS 7. Role should work for Ubuntu. 
 
 Requirements
 ------------
